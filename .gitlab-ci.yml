@@ -1,0 +1,12 @@
+include:
+  - project: 'Energetech/infra/pipeline-template'
+    ref: master
+    file: '.gitlab-ci-flux-build-only.yml'
+
+variables:
+  PROJECTS: "contistreamlitapp"
+  HELM_PROJECT: "contistreamlitapp"
+  TIER: ui
+  NEW_KUBE: "yes"
+  PYLINT_SCORE: 0
+  BASE_PYTHON_PACKAGE: "contistreamlitapp"

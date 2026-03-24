@@ -1,0 +1,125 @@
+start: "2023-06-28" 
+end: "2023-07-01"
+
+capcity_auction:
+  endpoint: https://portal-api.energetech.ae/timeseriesrestapi/hotstorage/latest/actuals/?
+  user: energetech 
+  password: p37068Q$ptkH
+  meta_data_id: c15529f3-ca2e-4bdd-b509-736c84f553ca
+
+cap_prices: [
+  {
+    "id": "08c2c40a-adfc-4342-a79f-8cafb6188fa1",
+    "data_key": "jao_capacity_auction_market_data_prices_NLL_GB_BE_Daily",
+    "display_name": "NEMO GBBE"
+  },
+  {
+    "id": "beb88a18-487a-4109-81e3-7fbe561690e9",
+    "data_key": "jao_capacity_auction_market_data_prices_IF1_GB_FR_Daily",
+    "display_name": "IFA1 GBFR"
+  },
+  {
+    "id": "2d7c88bd-b30b-4773-b37b-d1f77e9b3d7a",
+    "data_key": "jao_capacity_auction_market_data_prices_BDL_GB_NL_Daily",
+    "display_name": "BN GBNL"
+  },
+  {
+    "id": "f5751909-aa59-4995-902d-e9aff5762336",
+    "data_key": "jao_capacity_auction_market_data_prices_IF2_GB_FR_Daily",
+    "display_name": "IFA2 GBFR"
+  },
+  {
+    "id": "c15529f3-ca2e-4bdd-b509-736c84f553ca",
+    "data_key": "jao_capacity_auction_market_data_prices_IF1_FR_GB_Daily",
+    "display_name": "IFA1 FRGB"
+  },
+  {
+    "id": "c04f6d70-096b-499e-95fc-1af84d3fba42",
+    "data_key": "jao_capacity_auction_market_data_prices_NLL_BE_GB_Daily",
+    "display_name": "NEMO BEGB"
+  },
+  {
+    "id": "b8faf69e-539e-4caf-bdd7-3ec6e9c7c442",
+    "data_key": "jao_capacity_auction_market_data_prices_BDL_NL_GB_Daily",
+    "display_name": "BN NLGB"
+  },
+
+  {
+    "id": "125be3fc-0842-418c-8d81-050ebaea298d",
+    "data_key": "jao_capacity_auction_market_data_prices_IF2_FR_GB_Daily",
+    "display_name": "IFA2 FRGB"
+  }
+]
+
+cap_volume: [
+  {
+    "id": "f84d04bc-0898-4bab-9088-c4b3e0b3419d",
+    "data_key": "jao_capacity_auction_market_data_allocated_capacities_NLL_GB_BE_Daily",
+    "display_name": "NEMO GBBE Cap"
+  },
+  {
+    "id": "bceee114-77ca-456e-a9f7-215921ab60af",
+    "data_key": "jao_capacity_auction_market_data_allocated_capacities_NLL_BE_GB_Daily",
+    "display_name": "NEMO BEGB Cap"
+  },
+  {
+    "id": "97abbdfa-00d0-4277-ae97-d521e60321db",
+    "data_key": "jao_capacity_auction_market_data_allocated_capacities_BDL_NL_GB_Daily",
+    "display_name": "BN NLGB Cap"
+  },
+  {
+    "id": "8e822828-ca8a-4fc4-85d9-86ef0088c30d",
+    "data_key": "jao_capacity_auction_market_data_allocated_capacities_BDL_GB_NL_Daily",
+    "display_name": "BN GBNL Cap"
+  },
+  {
+    "id": "6574d2c2-6d50-4318-8578-7a1204d3fe2d",
+    "data_key": "jao_capacity_auction_market_data_allocated_capacities_IF2_FR_GB_Daily",
+    "display_name": "IFA2 FRGB Cap"
+  },
+  {
+    "id": "4ee8731b-bd52-4075-ab7b-0acd998db45b",
+    "data_key": "jao_capacity_auction_market_data_allocated_capacities_IF2_GB_FR_Daily",
+    "display_name": "IFA2 GBFR Cap"
+  },
+  {
+    "id": "3b1701a1-baae-46ee-9a2e-b49fa6affb52",
+    "data_key": "jao_capacity_auction_market_data_allocated_capacities_IF1_GB_FR_Daily",
+    "display_name": "IFA1 GBFR Cap"
+  },
+  {
+    "id": "9dfc7e76-6850-4f8e-a48d-18478f132dfd",
+    "data_key": "jao_capacity_auction_market_data_allocated_capacities_IF1_FR_GB_Daily",
+    "display_name": "IFA1 FRGB Cap"
+  }
+]
+
+flow_loss:
+  BE_NEMO: 2.372
+  FR_IFA: 2.34
+  FR_IFA2: 2.95
+  NL_BN: 3
+  ##include eleclinks::flow_loss
+
+dah_flows :
+  url: https://enbm.netareports.com/dataService?username=powerintraday&password=intraday&format=csv&action=data&chart=bycountry&startdatetime=beggining&enddatetime=final&resolution=hh&outturnsched=2
+
+fundamentals:
+  url_solar: 'https://app.enappsys.com/datadownload?code=gb/elec/renewables/solar/forecast/history&currency=GBP&minavmax=false&pass=233238244242225228225249&res=hourly&tag=csv&timezone=CET&user=powerintraday&start=startdate&end=enddate'
+  url_solar_ng: 'https://enrenew.netareports.com/datadownload?code=gb/elec/renewables/solar/history&currency=GBP&minavmax=false&pass=233238244242225228225249&res=hourly&tag=csv&timezone=CET&user=powerintraday&start=startdate&end=enddate'
+  url_wind: 'https://app.enappsys.com/datadownload?code=gb/elec/renewables/wind&currency=GBP&minavmax=false&pass=233238244242225228225249&res=hourly&tag=csv&timezone=CET&user=powerintraday&start=startdate&end=enddate' 
+  url_wind_area: 'https://app.enappsys.com/datadownload?code=gb/elec/renewables/wind/locational&currency=GBP&minavmax=false&pass=233238244242225228225249&res=hh&tag=csv&timezone=CET&user=powerintraday&start=startdate&end=enddate'
+  url_demand: https://eu.data.energy/datadownload?code=gb/elec/demand/anticipated&currency=EUR&minavmax=false&pass=197238229242231229212229227232161178176178176&res=hourly&tag=csv&timezone=CET&user=EnergeTechOps&start=startdate&end=enddate
+
+cap_mapping:
+
+  BELGIUM DA SCHEDULED IMPORT (MW): jao_capacity_auction_market_data_prices_NLL_BE_GB_Daily
+  BELGIUM DA SCHEDULED EXPORT (MW): jao_capacity_auction_market_data_prices_NLL_GB_BE_Daily
+  FRANCE DA SCHEDULED IMPORT (MW): jao_capacity_auction_market_data_prices_IF1_FR_GB_Daily
+  FRANCE SCHEDULED DA EXPORT (MW): jao_capacity_auction_market_data_prices_IF1_GB_FR_Daily
+  FRANCE 2 DA SCHEDULED IMPORT (MW): jao_capacity_auction_market_data_prices_IF2_FR_GB_Daily
+  FRANCE 2 SCHEDULED DA EXPORT (MW): jao_capacity_auction_market_data_prices_IF2_GB_FR_Daily
+  NETHERLANDS DA SCHEDULED IMPORT (MW): jao_capacity_auction_market_data_prices_BDL_NL_GB_Daily
+  NETHERLANDS DA SCHEDULED EXPORT (MW): jao_capacity_auction_market_data_prices_BDL_GB_NL_Daily
+
+

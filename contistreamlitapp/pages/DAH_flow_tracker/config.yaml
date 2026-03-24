@@ -1,0 +1,69 @@
+start: "2023-08-01" 
+end: "2023-08-15"
+
+country_list : ['FR', 'BE', 'NL']
+interconnector_names: ['IFA1', 'IFA2','NEMO', 'BN']
+direction: ['imports', 'exports']
+fx : 1.15
+timeseries:
+  endpoint: https://portal-api.energetech.ae/timeseriesrestapi/hotstorage/latest/actuals/?
+  endpoint_forecast: https://portal-api.energetech.ae/timeseriesrestapi/hotstorage/latest/forecasts/?
+  endpoint_forecast_snapshot: https://portal-api.energetech.ae/timeseriesrestapi/coldstorage/partitioned_by_pub_at?
+  user: energetech 
+  password: p37068Q$ptkH
+
+cap_prices:
+  NL:
+    BN:
+      import_id: "2d7c88bd-b30b-4773-b37b-d1f77e9b3d7a"
+      import_name: "jao_capacity_auction_market_data_prices_BDL_GB_NL_Daily"
+      export_id: "b8faf69e-539e-4caf-bdd7-3ec6e9c7c442"
+      export_name: "jao_capacity_auction_market_data_prices_BDL_NL_GB_Daily"
+  FR:
+    IFA1:
+      import_id: "beb88a18-487a-4109-81e3-7fbe561690e9"
+      import_name: "jao_capacity_auction_market_data_prices_IF1_GB_FR_Daily"
+      export_id: "c15529f3-ca2e-4bdd-b509-736c84f553ca"
+      export_name: "jao_capacity_auction_market_data_prices_IF1_FR_GB_Daily"
+    IFA2:
+      import_id: "f5751909-aa59-4995-902d-e9aff5762336"
+      import_name: "jao_capacity_auction_market_data_prices_IF2_GB_FR_Daily"
+      export_id: "125be3fc-0842-418c-8d81-050ebaea298d"
+      export_name: "jao_capacity_auction_market_data_prices_IF2_FR_GB_Daily"
+  BE:
+    NEMO:
+      import_id: "08c2c40a-adfc-4342-a79f-8cafb6188fa1"
+      import_name: "jao_capacity_auction_market_data_prices_NLL_GB_BE_Daily"
+      export_id: "c15529f3-ca2e-4bdd-b509-736c84f553ca"
+      export_name: "jao_capacity_auction_market_data_prices_NLL_BE_GB_Daily"
+
+flow_loss:
+  NEMO: 2.372
+  IFA1: 2.34
+  IFA2: 2.95
+  BN: 3
+  Eleclink: 2.9
+
+dah:
+  FR:
+    portfolio: "ContinentFR"
+    auction: "FR-H"
+  NL:
+    portfolio: "ContinentNL"
+    auction: "NL-H"
+  BE:
+    portfolio: "ContinentBE"
+    auction: "BE-H"
+  IE:
+    portfolio: "IE_CC_Book"
+    auction: "IE"
+  GB:
+    auction: "GB"
+    auction_nordpool: "GB-H"
+
+spot_prices:
+  FR: b784a329-218d-49ae-a11e-9eee36d955b3
+  NL: 2a3555b6-4fe2-4658-9c15-53aeb8def2f8
+  DE: 07071ecf-e1de-4696-8177-9907dea71d1e
+  BE: ee565377-a9f2-40f2-892d-94b6edfc0cc7
+  UK: 292f6e77-c730-4670-b5cf-bc7d9b2ff00d

@@ -1,0 +1,194 @@
+timeseries:
+  prod:
+    endpoint: https://portal-api.energetech.ae/timeseriesrestapi/hotstorage/latest/actuals/?
+    user: energetech 
+    password: p37068Q$ptkH
+  dev:
+    endpoint: https://portal-api-dev.energetech.ae/timeseriesrestapi/hotstorage/latest/actuals/?
+    user: energetech 
+    password: p37068Q$ptkH
+
+fetch_trade_api:
+  prod:
+    trades_endpoint: https://portal-api.energetech.ae/series-updater/v2/algo-trading-data-fetcher/trades
+  dev:
+    trades_endpoint: https://portal-api-dev.energetech.ae/series-updater/v2/algo-trading-data-fetcher/trades
+
+enappsys:
+  endpoint : https://eu.data.energy/datadownload?code=nl/elec/balancing/detailed/ladder&currency=EUR&minavmax=false&pass=197238229242231229212229227232161178176178176&res=qh&tag=csv&timezone=CET&user=EnergeTechOps
+  endpoint_niv : https://app.enappsys.com/datadownload?code=nl/elec/balancing/nrv/analysis&currency=EUR&minavmax=false&pass=197238229242231229212229227232161178176178176&res=qh&tag=csv&timezone=CET&user=EnergeTechOps
+  endpoint_niv_old: https://eu.data.energy/datadownload?code=nl/elec/system/summary&currency=EUR&minavmax=false&pass=197238229242231229212229227232161178176178176&res=qh&tag=csv&timezone=CET&user=EnergeTechOps&start
+  mid_price : https://eu.data.energy/datadownload?code=nl/elec/system/summary&currency=EUR&minavmax=false&pass=197238229242231229212229227232161178176178176&res=qh&tag=csv&timezone=CET&user=EnergeTechOps
+
+docs: https://energetech.atlassian.net/wiki/spaces/CP/pages/577437709/Tool+Performance+Analysis
+
+kpi_settings:
+  country_list: [ "NL", "FR", "IE", "GB", "BE", "AT", "DE"]
+  price: ['spot', 'spot EXXA', 'vwap_2h', 'vwap_1h', 'imbal long', 'imbal short', 'imbal','IDA1', 'IDA2', IDA3, 'HH']
+  entry: ['DAH',  'Total PnL'] # 'ID_trades',
+  exit: ['ID_vwap_vol', 'ID_VWAP_2h', 'ID', '2H Block vwap total', '4H Block vwap total', 'Imbalance']
+
+  'DAH':
+    fee: 0.088
+    FR:
+      portfolio: ["ContinentFR"]
+      auction: "FR-H"
+      product: "FR_DA_Auction_Hour_Power"
+      mandate: 200
+    NL:
+      portfolio: ["ContinentNL"]
+      auction: "NL-H"
+      product: "NL_DA_Auction_Hour_Power"
+      mandate: 150
+    BE:
+      portfolio: ["ContinentBE"]
+      auction: "BE-H"
+      product: "BE_DA_Auction_Hour_Power"
+      mandate: 0
+    IE:
+      portfolio: ["IE_CC_Book"]
+      auction: "IE"
+      product: "IE_DA_Auction_Hour_Power"
+      mandate: 25
+    GB:
+      portfolio: ['GB_AR_Book', 'GB_CC_Book2', 'GB_KA_Book']
+      fee: 0.023
+      auction: "GB"
+      product: "GB_DA_Auction_Hour_Power"
+      mandate: 200
+
+  spot:
+
+    FR: 5d3be099-25f9-4577-abde-4e61392f1c14
+    NL: 94886103-0aa4-4f9d-b6ab-c89553519902
+    BE: 9d9770d1-49c8-497d-a191-189a30ba9ff4
+    IE:
+    GB: 05d7c831-3544-4097-b7e7-75b145f91e35
+    AT: c5c9e15d-25a7-45e7-8456-2f878c9aed66
+  
+  intraday:
+    position_endpoint: https://portal-api.energetech.ae/contibackend/positions/positions?
+    product: TBD
+
+  Total PnL:
+    fee: 0 
+    prod:
+      pnl_endpoint: https://portal-api.energetech.ae/seer/position/pnl?
+    dev:
+      pnl_endpoint: https://portal-api-dev.energetech.ae/seer/position/pnl?
+    porfolio_group: TradingPortfolioGroup
+
+    FR:
+      portfolio: ContinentFR
+      resolution: H
+      mandate: 200
+    NL:
+      portfolio: ContinentNL
+      resolution: H
+      mandate: 150
+    GB:
+      portfolio: ContinentGB
+      resolution: H
+      mandate: 150
+    AT:
+      portfolio: ContinentAT
+      resolution: H
+      mandate: 20
+
+  
+  'ID_VWAP_2h':
+    fee: 0.128
+  'ID_vwap_vol':
+    fee: 0.128
+  '2H Block vwap total':
+    fee: 0.128
+  '4H Block vwap total':
+    fee: 0.128
+
+  intraday_trades:
+    fee: 0.128
+    vwap_duration: 60
+    vwap_h_delivery: [60, 120]
+    BE:
+      portfolio: ['BE_DT_Book', 'BE_CC_Book2', 'BE_AR_Book', 'BE_JR_Book']
+      product: ["XBID_Hour_Power", "Intraday_Hour_Power"]
+    FR:
+      portfolio: ['FR_CC_Book2', 'FR_DT_Book', 'FR_AR_Book', 'FR_JR_Book', 'FR_JDN_Book', 'FR_JLS_Book']
+      product: ["XBID_Hour_Power", "Intraday_Hour_Power"]
+    NL:
+      portfolio: ['NL_CC_Book2', 'NL_DT_Book', 'NL_AR_Book', 'NL_JR_Book', 'NL_JDN_Book', 'NL_JLS_Book']
+      product: ["XBID_Hour_Power", "Intraday_Hour_Power"]
+    GB:
+      portfolio: ['ContinentGB', 'GB_AR_Book', 'GB_CC_Book2', 'GB_DT_Book', 'GB_JDN_Book', 'GB_JLS_Book', 'GB_JR_Book' ]
+      product :  ['GB_Half_Hour_Power', 'GB_2_Hour_Power', 'GB_4_Hour_Power'] 
+    IE:
+      portfolio: ["IE_CC_Book"]
+      product: [ida1, ida2, ida3]
+    DE:
+      portfolio: []
+      product: ["XBID_Hour_Power", "Intraday_Hour_Power"]
+    AT:
+      portfolio: ['AT_CC_Book2', 'AT_DT_Book', 'AT_JDN_Book', 'AT_JLS_Book']
+      product:  ["XBID_Hour_Power", "Intraday_Hour_Power"]
+
+  imbal:
+    fee: 0
+    FR:
+      imbal long: ba69c652-d445-4f08-adcf-10ea25e56770
+      imbal short: 7694f1e7-eacf-4b15-9abd-2499ca89b515
+      imbal_niv:
+        afr_up: cd2a13ac-4385-43b8-83fc-8ed05952551a
+        afrr_down: 8e0ff016-2478-479e-89ac-b100c8b0659a
+        mfr_up: 7ce73b34-ef22-4b52-b0e2-620b8a6dfd98
+        mfr_down: a8963878-1bc2-4261-a404-23aefe4b7593
+        rr_up: 29337cdd-5afe-4121-b5de-fce2f787e9bf
+        rr_down: 9b661efc-7061-444a-a653-067e09a02a95
+        iggc: b1f83f77-34f6-4fec-b9fb-cccfa1f1d938
+
+    NL: 
+      imbal short: 862799c1-aaad-480c-a323-9ba23f8d0e30
+      imbal long: f33914e0-99e9-47a8-9047-2bd63c4e72db
+    BE:
+      imbal long: "98a529ae-d779-11ec-95e2-f2d5ea53957f"
+      imbal short: "b6a825f0-d779-11ec-9627-f2d5ea53957f"
+    IE:
+      imbal: f909e932-5989-11ec-ac4a-a4bb6d5bfc5d
+    GB:
+      imbal: 627eb1a0-c865-4c7c-9cfd-b5e6fb53cba4
+    AT:
+      imbal: 7793661b-7945-48d3-b9a9-a0d5539d08a1
+
+
+  
+  sizing:
+    mandate_NL: 100
+    mandate_FR: 200
+    mandate_NL_jr: 50
+    mandate_FR_jr: 100
+
+flow_nomination:
+  db:  TradeData
+  cables: 
+    NL: BritNed
+    FR: IFA1
+    BE: Nemo Link
+  collection: TradeDeals
+  CrossBorderCables:
+    BritNed:
+      Country1: GB
+      Country2: NL
+    Nemo Link:
+      Country1: GB
+      Country2: BE
+    IFA1:
+      Country1: GB
+      Country2: FR
+    IFA2:
+      Country1: GB
+      Country2: FR
+
+Weather_DAH_Weekly_error: https://app.powerbi.com/links/hL0se20G0v?ctid=ece411d5-0bab-4a17-9703-e95a309e2f64&pbi_source=linkShare
+historical_dash: https://portal.energetech.ae/metportal/forecast
+xbid_flows: https://portal.energetech.ae/contidashboard/cross-border
+
+signal_config_path : 'Strategy_performance/old scripts/config_strategy.yaml'

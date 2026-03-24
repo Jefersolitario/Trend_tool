@@ -1,0 +1,15 @@
+streamlit==1.38.0
+scikit-learn
+plotly
+pandas == 2.2.0
+pymongo
+pyyaml
+scipy
+matplotlib
+streamlit-autorefresh
+holidays
+energyquantified
+shap
+aiohttp
+msal
+urllib3

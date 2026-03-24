@@ -1,0 +1,4 @@
+apiVersion: v2
+name: contistreamlitapp
+description: Helm chart for contistreamlitapp
+version: 1.0.0

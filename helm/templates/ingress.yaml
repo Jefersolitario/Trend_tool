@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  name: {{ .Values.appname }}-ingress
+  namespace: {{ .Values.env }}
+spec:
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host }}
+      secretName: aks-ingress-tls
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - path: /{{ .Values.ingress.path }}(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.appname }}-svc
+                port:
+                  number: {{ .Values.service.port }}

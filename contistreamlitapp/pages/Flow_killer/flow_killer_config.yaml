@@ -1,0 +1,52 @@
+
+minimum_spread: 5
+intraday_trades:
+  product: "XBID_Hour_Power"
+  areas:
+    BE: "10YBE----------2"
+    FR: "10YFR-RTE------C"
+    NL:  "10YNL----------L"
+  GB:
+    intraday_products_gb : ['GB_4_Hour_Power','GB_2_Hour_Power','GB_Half_Hour_Power']
+    intraday_products_gb_name: ['GB 4HR', 'GB 2HR', 'GB HH']
+
+flow_countries:
+
+  FR: 
+    -IFA
+    -IFA2
+  BE: NEMO
+  NL: BN
+
+flow_loss:
+  BE_NEMO: 2.372
+  FR_IFA: 2.34
+  FR_IFA2: 2.95
+  NL_BN: 3
+
+gate_closure:
+
+  BN: 01:10:00
+  NEMO: 01:10:00
+  IFA1: 01:15:00 
+  IFA2: 01:15:00
+
+capcity_auction:
+  endpoint: https://portal-api.energetech.ae/timeseriesrestapi/hotstorage/latest/actuals/?
+  user: energetech 
+  password: p37068Q$ptkH
+  meta_data_id: c15529f3-ca2e-4bdd-b509-736c84f553ca
+
+intraday_cap:
+- id: "08256d5e-8278-4fd7-96a0-4e9e589350eb"
+  data_key: "jao_capacity_auction_market_data_offer_capacities_IF1_GB_FR_Intraday"
+- id: "3c76927a-105e-443e-b53f-277936e76be9"
+  data_key: "jao_capacity_auction_market_data_offer_capacities_IF2_FR_GB_Intraday"
+- id: "ee421553-ef01-4d07-8b7c-a2c06966ebed"
+  data_key: "jao_capacity_auction_market_data_offer_capacities_IF2_GB_FR_Intraday"
+- id: "4c8445c4-bf6d-45ad-b6e4-a070535d46fb"
+  data_key: "jao_capacity_auction_market_data_offer_capacities_NLL_GB_BE_Intraday"
+- id: "7ce4656c-bc5c-4e23-bc0f-06e60efb0904"
+  data_key: "jao_capacity_auction_market_data_offer_capacities_NLL_BE_GB_Intraday"
+- id: "d7491c00-b984-4507-b136-cf788922da63"
+  data_key: "jao_capacity_auction_market_data_offer_capacities_IF1_FR_GB_Intraday"

@@ -1,0 +1,174 @@
+timeseries:
+  endpoint: https://portal-api.energetech.ae/timeseriesrestapi/hotstorage/latest/actuals/?
+  endpoint_forecast_snapshot: https://portal-api.energetech.ae/timeseriesrestapi/coldstorage/partitioned_by_pub_at?
+  endpoint_history: https://portal-api.energetech.ae/timeseriesrestapi/coldstorage/partitioned_by_event_at?
+  user: energetech 
+  password: p37068Q$ptkH
+
+kpi_settings:
+  strategy_list: ['strat_FR_Flow_export_increase', strat_NL_Flow_export_increase, 'solarie', 'strat_france_consumption_rte',  'strat_francewind_rte', 'France_strategy',
+  strat_gb_dummy_short_3_5, strat_gb_dummy_short_3_5_imbal]
+
+
+France_strategy:
+  freq: 'h'
+  country: FR
+  volume: 50
+  fee: 0.036
+  collateral_cost_mwh: 1450
+  entry_price: 'France Day Ahead'
+  id_entry: 'FR-H'
+  exit_price: 'FR Imbalance'
+  id_exit: 
+    fr_imbalance_pos: e562c098-b0ec-11ec-8e5e-b6cd6f01dd35
+    fr_imbalance_neg: 1c9320a8-b0ed-11ec-9515-9232e1bcaaa0
+  id_ts_cold_storage: rte_fr_imbalance_price_negative_settlement_30_min
+  fundamentals: []
+  fund_plot: 
+  docs: https://energetech.atlassian.net/l/cp/Tp0GDm5m
+
+
+solarie:
+  freq: 'h'
+  country: IE
+  volume: 5
+  collateral_cost_mwh: 1000
+  fee: 0.036
+  entry_price: 'Ireland Day Ahead'
+  id_entry: 'IE'
+  exit_price: 'Ireland Imbalance price'
+  id_exit: 'f909e932-5989-11ec-ac4a-a4bb6d5bfc5d'
+  fundamentals: []
+  fund_plot: 
+  docs: https://energetech.atlassian.net/l/cp/Bk2jZ9Gk
+
+strat_france_consumption_rte:
+  freq: 'h'
+  country: FR
+  volume: 50
+  collateral_cost_mwh: 1450
+  fee: 0.036
+  entry_price: 'FR XBID 5min vwap 65 min before gate closure'
+  id_entry:
+        country: "FR"
+        product: "XBID_Hour_Power"
+        lead_time: 120
+        duration: 5
+  exit_price: 'FR Imbalance'
+  id_exit: 
+    fr_imbalance_pos: e562c098-b0ec-11ec-8e5e-b6cd6f01dd35
+    fr_imbalance_neg: 1c9320a8-b0ed-11ec-9515-9232e1bcaaa0
+  fundamentals: ['rte_consumption_da_forcast', 'rte_consumption_id_forcast', 'forecast_delta']
+  fund_plot: 'forecast_delta'
+  docs: https://energetech.atlassian.net/wiki/spaces/CP/pages/550109185/Strategy+France+Consumption
+
+strat_francewind_rte:
+  freq: 'h'
+  country: FR
+  volume: 50
+  collateral_cost_mwh: 1450
+  fee: 0.036
+  entry_price: 'FR XBID 5min vwap 65 min before gate closure'
+  id_entry:
+        country: "FR"
+        product: "XBID_Hour_Power"
+        lead_time: 60
+        duration: 5
+  exit_price: 'FR Imbalance'
+  id_exit: 
+    fr_imbalance_pos: e562c098-b0ec-11ec-8e5e-b6cd6f01dd35
+    fr_imbalance_neg: 1c9320a8-b0ed-11ec-9515-9232e1bcaaa0
+  fundamentals: ['fr_wind_dah_rte', 'fr_wind_dah_meteo', 'forecast_delta']
+  fund_plot: forecast_delta
+  docs: https://energetech.atlassian.net/wiki/spaces/CP/pages/556204033/Strategy+France+Wind
+
+
+strat_FR_Flow_export_increase:
+  freq: 'h'
+  country: FR
+  volume: 50
+  collateral_cost_mwh: 1450
+  fee: 0.036
+  entry_price: 'FR XBID 5min vwap 65 min before gate closure'
+  id_entry:
+        country: "FR"
+        product: "XBID_Hour_Power"
+        lead_time: 120
+        duration: 5
+  exit_price: 'FR Imbalance'
+  id_exit: 
+    fr_imbalance_pos: e562c098-b0ec-11ec-8e5e-b6cd6f01dd35
+    fr_imbalance_neg: 1c9320a8-b0ed-11ec-9515-9232e1bcaaa0
+  exit_price_backup : fr_vwap_xbid_hh_1_5_gc
+  id_exit_back_up: 
+        country: "FR"
+        product: "XBID_Half_Hour_Power"
+        lead_time: 105
+        duration: 15 
+  fundamentals: ['flow_change_q4q1', 'Last Scheduled Flow', 'DA Scheduled Flow', 'Great Britain Intraday', 'id flow change']
+  fund_plot: 'flow_change_q4q1'
+  docs: https://energetech.atlassian.net/wiki/spaces/CP/pages/573865985/Strategy+FR+Flow
+
+strat_NL_Flow_export_increase:
+  freq: '15min'
+  country: NL
+  volume: 25
+  collateral_cost_mwh: 1450
+  fee: 0.036
+  entry_price: 'NL XBID 5min vwap 65 min before gate closure'
+  id_entry:
+        country: "NL"
+        product: "XBID_Hour_Power"
+        lead_time: 120
+        duration: 15
+  exit_price: 'NL Imbalance'
+  id_exit: 
+    nl_imbalance_pos: bcd85791-9fae-11ec-81ae-a4bb6d5bfc5d
+    nl_imbalance_neg:  be1c2246-9fae-11ec-bfcd-a4bb6d5bfc5d
+  exit_price_backup : nl_vwap_xbid_q_1_5_gc
+  id_exit_back_up: 
+        country: "NL"
+        product: "XBID_Quarter_Hour_Power"
+        lead_time: 90
+        duration: 15 
+  fundamentals: ['flow_change_q4q1', 'Last Scheduled Flow', 'DA Scheduled Flow', 'Great Britain Intraday', 'id flow change']
+  fund_plot: 'flow_change_q4q1'
+  docs: https://energetech.atlassian.net/wiki/spaces/CP/pages/550764545/Strategy+NL+Flow
+
+strat_gb_dummy_short_3_5:
+  freq: 'h'
+  country: GB
+  volume: 50
+  collateral_cost_mwh: 3000
+  fee: 0.036
+  entry_price: 'GB Day Ahead'
+  id_entry: 'GB'
+  exit_price: 'gb_hh_intraday_last_hour'
+  id_exit: 
+    country: "GB"
+    product: "HH vwap"
+    lead_time: None
+    duration: 60
+
+  fundamentals: []
+  docs: dummy_no_docs
+
+strat_gb_dummy_short_3_5_imbal:
+  freq: 'h'
+  country: GB
+  volume: 50
+  collateral_cost_mwh: 26000
+  fee: 0.036
+  entry_price: 'GB Day Ahead'
+  id_entry: 'GB'
+  exit_price: 'Imbalance'
+  id_exit: 6f0524c9-4db6-11ec-9b8e-00e04c239987
+
+  fundamentals: []
+  docs: dummy_no_docs
+
+
+bencharmark:
+    fr_imbal_up: e562c098-b0ec-11ec-8e5e-b6cd6f01dd35
+    fr_imbal_down: 1c9320a8-b0ed-11ec-9515-9232e1bcaaa0
+    ie_imbal: f909e932-5989-11ec-ac4a-a4bb6d5bfc5d

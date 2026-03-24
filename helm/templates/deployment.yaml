@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appname }}-dep
+  labels:
+    app: {{ .Values.appname }}
+  namespace: {{ .Values.env }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.appname }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appname }}
+    spec:
+      containers:
+        - name: {{ .Values.appname }}
+          image: "{{ .Values.registry.server }}/{{ .Values.registry.image }}:{{ .Values.registry.tag }}"
+          imagePullPolicy: {{ .Values.registry.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: {{ .Values.service.port }}
+            periodSeconds: 3
+            timeoutSeconds: 1
+          resources:
+            limits:
+              memory: 4Gi
+              cpu: 1
+            requests:
+              memory: 1Gi
+              cpu: 0
+          env:
+            - name: "SERVER_ENVIRONMENT"
+              value: {{ .Values.env }}
+            - name: "DOMAIN_ENVIRONMENT"
+              value: {{ .Values.domainEnv }}
+      nodeSelector:
+        "good-for-app": "true"

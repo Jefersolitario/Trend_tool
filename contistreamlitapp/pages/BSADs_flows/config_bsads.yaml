@@ -1,0 +1,371 @@
+start: "2023-03-23" 
+end: "2023-07-01"
+min_date: "2023-03-22"
+
+prod:
+  requirements_endpoint: "https://portal-api.energetech.ae/faradyn/faradyn/getauctions?"
+dev:
+  requirements_endpoint: "https://portal-api.energetech.ae/faradyn/faradyn/getauctions?"
+
+auction_requirements: 
+  prod: 
+    endpoint: "https://portal-api.energetech.ae/faradyn/faradyn/getauction?"
+  dev:
+    endpoint: "https://portal-api.energetech.ae/faradyn/faradyn/getauction?"
+
+trayport:
+  user: jramirez
+  key: 17db539937bd463894ed689be7628d0a
+  endpoint: https://analytics.trayport.com/api/trades/ohlcv?
+  params:
+    product:
+    interval: 15
+    intervalUnit: Minute
+
+party: 
+  - Dvalin ApS
+  - Centrica Energy Trading A/S
+  - Northpool B.V.
+  - ElectroRoute Energy Trading Limited
+  - Optimax Energy GmbH
+  - Energi Danmark A/S
+  - In Commodities A/S
+  - Nitor Energy A/S
+  - Electrabel SA
+  - Cobblestone Energy Ltd
+  - MFT Energy A/S
+  - Trailstone Renewables GmbH
+  - Danske Commodities A/S
+  - EDF Trading Ltd
+  - PowerMart ApS
+  - Dare Power Ltd
+  - Nordic Energy House ApS
+  - Xenon Capital Markets Ltd
+  - BKW Energie AG
+  - DXT Commodities SA
+  - DC Energy Trading V.O.F.
+  - Norlys Energy Trading A/S
+  - Energetech Europe BV
+  - Copenhagen Energy Trading A/S
+  - Vattenfall Energy Trading GmbH
+
+interconnectors:
+  IFD: IFA 
+  I2D: IFA2 
+  IND: NEMO
+  IBD: BritNed 
+  ILD: Eleclink
+  IFG: IFA 
+  I2G: IFA2 
+  ING: NEMO
+  IBG: BritNed 
+  ILG: Eleclink
+
+interconnectors_corridor:
+  IFD: IF1_GB_FR 
+  I2D: IF2_GB_FR
+  IND: BN_GB_NL
+  IBD: BN_GB_NL 
+  ILD: EL1_GB_FR
+  IFG: IF1_FR_GB 
+  I2G: IF2_FR_GB
+  ING: NEMO_BE_GB
+  IBG: BN_NL_GB 
+  ILG: EL1_FR_GB
+
+flow_loss:
+  NEMO: 2.372
+  IFA: 2.34
+  IFA2: 2.95
+  BritNed: 3
+  Eleclink: 2.9
+
+interconnectors_ids:
+  - IND
+  - IFD
+  - I2D
+  - IFG
+  - ING
+  - I2G
+  - IBG
+  - ILG
+  - IBD
+  - ILD
+
+intraday_market:
+  product: "XBID_Hour_Power"
+  duration: [15, 10, 5]
+  countries:
+    - FR
+    - NL
+    - BE
+  countries_mapping:
+    'IFA': 'FR vwap '
+    'IFA2': 'FR vwap '
+    'Eleclink': 'FR vwap '
+    'BritNed': 'NL vwap '
+    'NEMO': 'BE vwap '
+  countries_mapping_spot:
+    'IFA': 'FR spot_price'
+    'IFA2': 'FR spot_price'
+    'Eleclink': 'FR spot_price'
+    'BritNed': 'NL spot_price'
+    'NEMO': 'BE spot_price'
+  countries_mapping_vol:
+  ## BUG ON SPCAES AFTER VOL
+    'IFA': 'FR vol '
+    'IFA2': 'FR vol '
+    'Eleclink': 'FR vol '
+    'BritNed': 'NL vol '
+    'NEMO': 'BE vol '
+
+
+col: 
+- 'partyId'
+- 'assetId'
+- 'settlementPeriod' 
+- 'price' 
+- 'volume' 
+- 'cost'
+- 'GB spot_price'
+- 'GB spot price eur'
+- 'FR spot_price' 
+- 'NL spot_price' 
+- 'BE spot_price'
+- 'rate'
+
+capcity_auction:
+  endpoint: https://portal-api.energetech.ae/timeseriesrestapi/hotstorage/latest/actuals/?
+  user: energetech 
+  password: p37068Q$ptkH
+  meta_data_id: c15529f3-ca2e-4bdd-b509-736c84f553ca
+
+intraday_cap_price:
+- id: "43d13768-f41d-420d-afbf-88b771c452b9"
+  data_key: "jao_capacity_auction_market_data_prices_IF1_GB_FR_Intraday"
+  display_name: 'IF1_GB_FR'
+- id: "81e71e4c-1b88-48f1-8053-3ad155669eab"
+  data_key: "jao_capacity_auction_market_data_prices_IF2_GB_FR_Intraday"
+  display_name: 'IF2_GB_FR'
+- id: "3b5466fc-ebd0-4fc8-89fc-4afa4463624e"
+  data_key: "jao_capacity_auction_market_data_prices_NLL_GB_BE_Intraday"
+  display_name: 'NEMO_GB_BE'
+- id: "5bbfb7ca-3cf4-400d-8c84-c8ebe01959ed"
+  data_key: "jao_capacity_auction_market_data_prices_IF2_FR_GB_Intraday"
+  display_name: 'IF2_FR_GB'
+- id: "15a564a5-649f-4c1c-a86c-7f941fabceca"
+  data_key: "jao_capacity_auction_market_data_prices_NLL_BE_GB_Intraday"
+  display_name: 'NEMO_BE_GB'
+- id: "7db123a3-8c52-4a47-9cdf-f2e02ad87f83"
+  data_key: "jao_capacity_auction_market_data_prices_IF1_FR_GB_Intraday"
+  display_name: 'IF1_FR_GB'
+- id: "1171008c-9413-4f74-a205-657faab05bbc"
+  data_key: "jao_capacity_auction_market_data_prices_EL1_FR_GB_Intraday"
+  display_name: 'EL1_FR_GB'
+- id: "801fb60a-c159-4647-b13b-63395c2bb522"
+  data_key: "jao_capacity_auction_market_data_prices_EL1_GB_FR_Intraday"
+  display_name: 'EL1_GB_FR'
+
+intraday_cap_nl:
+  endpoint : https://enbm.netareports.com/dataService?username=powerintraday&password=intraday&format=csv&action=data&chart=intradayexplicit&startdatetime=initial&enddatetime=final&resolution=hh&fnborder=2
+
+assets:
+  - IFD-DVAL1
+  - IFD-NEAS1
+  - IFD-NTPL1
+  - IFD-ELTR1
+  - IFD-OPMX1
+  - IFD-EDMK1
+  - IFD-INCM1
+  - IND-DVAL1
+  - IFD-NITR1
+  - I2D-NITR1
+  - IND-OPMX1
+  - IND-ELEE1
+  - I2D-ELTR1
+  - IND-NEAS1
+  - I2D-NEAS1
+  - IBD-CBST1
+  - IBD-MFTE1
+  - IBD-NTPL1
+  - IND-MFTE1
+  - IBD-TRLS1
+  - IND-TRLS1
+  - IBD-DSKC1
+  - IND-NITR1
+  - IND-NTPL1
+  - IBD-INCM1
+  - IND-INCM1
+  - IBD-NEAS1
+  - IFD-EDFT1
+  - I2D-EDFT1
+  - IBD-NITR1
+  - IBD-EDMK1
+  - IND-DSKC1
+  - IND-EDMK1
+  - IND-CBST1
+  - I2D-INCM1
+  - I2D-PWMR1
+  - IFD-DSKC1
+  - IBD-PWMR1
+  - I2D-DSKC1
+  - IBD-EDFT1
+  - I2D-EDMK1
+  - IFD-CBST1
+  - IFD-TRLS1
+  - I2D-TRLS1
+  - IBD-DARE1
+  - IFD-MFTE1
+  - IND-ELTR1
+  - IND-EDFT1
+  - I2D-CBST1
+  - ILD-EDFT1
+  - ILD-DSKC1
+  - ILD-NEAS1
+  - ILD-PWMR1
+  - ILD-INCM1
+  - ILD-EDMK1
+  - I2D-NTPL1
+  - I2D-OPMX1
+  - IBD-ELTR1
+  - I2D-MFTE1
+  - ILD-CBST1
+  - IBG-INCM1
+  - IBG-DSKC1
+  - IBG-MFTE1
+  - ING-OPMX1
+  - ING-CBST1
+  - ING-INCM1
+  - ING-DSKC1
+  - I2G-EDFT1
+  - I2G-NEAS1
+  - ING-EDMK1
+  - ING-NEAS1
+  - I2G-OPMX1
+  - IBG-OPMX1
+  - I2G-CBST1
+  - IND-PWMR1
+  - IBD-NEHO1
+  - I2D-XNON1
+  - ILD-ELTR1
+  - ILD-MFTE1
+  - ILD-NTPL1
+  - ILD-BKWE1
+  - IBD-DVAL1
+  - IFD-BKWE1
+  - IFD-PWMR1
+  - I2D-NEHO1
+  - I2D-BKWE1
+  - IFD-XNON1
+  - I2G-ELTR1
+  - ILG-NEAS1
+  - I2G-DSKC1
+  - IND-DUFE1
+  - I2D-DVAL1
+  - IND-XNON1
+  - IBD-IDCE1
+  - ING-PWMR1
+  - IBG-CBST1
+  - IBG-PWMR1
+  - ILG-MFTE1
+  - I2G-BKWE1
+  - IFG-PWMR1
+  - IBG-NEAS1
+  - IFG-CBST1
+  - IFG-NEAS1
+  - ILG-DSKC1
+  - I2G-PWMR1
+  - ILG-NTPL1
+  - IFG-MFTE1
+  - IFG-ELTR1
+  - ING-ELTR1
+  - IBG-ELTR1
+  - IBG-NITR1
+  - ING-NITR1
+  - IFG-NITR1
+  - ILG-PWMR1
+  - ILG-INCM1
+  - ILG-EDMK1
+  - I2G-INCM1
+  - IFG-INCM1
+  - IFG-DVAL1
+  - I2G-NTPL1
+  - I2G-EDMK1
+  - IFG-EDFT1
+  - IBG-NTPL1
+  - I2G-DVAL1
+  - IBG-EDMK1
+  - IFG-BKWE1
+  - IBG-IDCE1
+  - IBG-DVAL1
+  - IBG-EDFT1
+  - IBG-DARE1
+  - IFG-OPMX1
+  - ILG-TRLS1
+  - ING-MFTE1
+  - ILG-CBST1
+  - IFG-DSKC1
+  - IFG-NTPL1
+  - ING-DVAL1
+  - ILG-EDFT1
+  - IFG-EDMK1
+  - IBG-ELEE1
+  - I2G-MFTE1
+  - IBG-TRLS1
+  - I2G-ELEE1
+  - ING-DARE1
+  - ING-NTPL1
+  - I2G-TRLS1
+  - ING-TRLS1
+  - ING-BKWE1
+  - ILG-ELTR1
+  - ING-XNON1
+  - IFG-XNON1
+  - ING-EDFT1
+  - IFG-TRLS1
+  - ILG-XNON1
+  - ILG-BKWE1
+  - ILD-TRLS1
+  - I2G-NITR1
+  - I2G-XNON1
+  - I2G-NORL1
+  - IFG-NORL1
+  - IFG-DUFE1
+  - I2D-NORL1
+  - IBD-NORL1
+  - ILD-OPMX1
+  - IFD-NORL1
+  - I2G-DUGE1
+  - IBG-ENTC1
+  - ING-ENTC1
+  - IFG-COPN1
+  - I2D-DARE1
+  - I2G-DARE1
+  - IFG-DARE1
+  - I2G-COPN1
+  - IBG-NORL1
+  - IBG-COPN1
+  - IND-ENTC1
+  - IFD-DARE1
+  - ILD-XNON1
+  - IBD-COPN1
+  - I2D-COPN1
+  - IFD-COPN1
+  - IND-NEHO1
+  - IFD-ENTC1
+  - IBD-DUFE1
+  - IBD-ENTC1
+  - IFD-DMCC1
+  - IND-DMCC1
+  - IBD-DMCC1
+  - IBG-DMCC1
+  - ING-DMCC1
+  - IFG-DMCC1
+  - I2G-DMCC1
+  - IFG-VTFS1
+  - I2G-VTET1
+  - ING-DUFE1
+  - IFD-VTFS1
+  - I2D-DMCC1
+  - IND-VTET1
+  - I2D-VTET1

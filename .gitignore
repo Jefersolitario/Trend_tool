@@ -1,0 +1,10 @@
+.idea/**
+.idea/misc.xml
+.idea
+*/.idea/workspace.xml
+dev/
+.venv/
+.vscode/
+__pycache__/
+*.pyc
+.env

@@ -1,0 +1,8 @@
+streamlit==1.24.1
+hydralit
+plotly
+pandas
+pymongo
+streamlit-autorefresh
+holidays
+sheeze

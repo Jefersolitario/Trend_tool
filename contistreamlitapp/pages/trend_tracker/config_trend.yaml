@@ -1,0 +1,87 @@
+timeseries:
+  prod:
+    endpoint: https://portal-api.energetech.ae/timeseriesrestapi/hotstorage/latest/actuals/?
+    user: energetech 
+    password: p37068Q$ptkH
+  dev:
+    endpoint: https://portal-api-dev.energetech.ae/timeseriesrestapi/hotstorage/latest/actuals/?
+    user: energetech 
+    password: p37068Q$ptkH
+
+kpi_settings:
+  country_list: ["FR", "IE", "NL", "GB", "BE", "AT", "DE", "PL", "CH", "DK1"]
+  weekdays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+  holidays: ['all_days', 'holidays', 'holidays_previous_day', 'holidays_next_day']
+  price: ['day_ahead', 'day_ahead EXXA', 'day_ahead NordPool', 'vwap_2h', 'vwap_2h_vol', 'vwap_1h', 'q_xbid_vwap_last_hour', 
+  'q_local_vwap', 'imbal long', 'imbal short', 'imbal','IDA1', 'IDA2', IDA3, 'HH', 
+  '2H Block vwap total', '2H Block vwap last hour', '4H Block vwap last hour', 'gb_hh_intraday_last_hour']
+
+  day_ahead:
+    FR: 5d3be099-25f9-4577-abde-4e61392f1c14
+    NL: 94886103-0aa4-4f9d-b6ab-c89553519902
+    BE: 9d9770d1-49c8-497d-a191-189a30ba9ff4
+    DE: 6d91d8b2-65c6-43d6-ab5b-59cbebc55592
+    IE: 
+    AT: c5c9e15d-25a7-45e7-8456-2f878c9aed66
+    GB: 05d7c831-3544-4097-b7e7-75b145f91e35
+    GB_Nordpool: f5e8159c-02c0-46bb-b549-a01101f98035
+    DK1: 53b5d346-e35e-4691-9a3c-b86d9bbdba03
+    PL: 93f62ef0-ea96-4797-b114-f8827aa853b9
+    CH: f12229c3-fd76-4211-9b61-00da94e47389
+  Intraday_auction:
+    HH:
+      GB: f832b34b-067b-4918-9427-e578aa242139
+    IDA1:
+      FR: 2cfb7e91-62cd-4bd5-a709-52a9fdbef5d6
+      NL: df14d175-139a-4a67-b463-66f19899b92d
+      DE: 86b9aa30-5869-4744-ba21-877deeff0b83
+      BE: 4472560b-883b-4633-9cda-5b6558d75622
+      AT: d2588143-6919-4a97-aedb-13b1958275df
+      GB: c5c91086-d6b7-4eb5-8937-efc9afd82ff1
+      IE:
+    IDA2:
+      FR: 83aa50d2-bd7a-4d0a-b34f-5e1319ffe44e
+      NL: 048a57d2-2aaa-4e42-b81c-fc9bdffbf421
+      DE: 59cb41de-a51b-4030-8dc5-38f41b8c5faa
+      BE: f93ae1c6-51cc-4bf5-9d64-8a957c7d347a
+      AT: fb51492e-a12e-46ac-b0e9-82df189c447f
+      GB: 112a98f1-d50d-4698-9402-91bb3f111b89
+      IE:
+    IDA3:
+      FR: 8e49f568-6614-494d-8bd1-6e93bed9f968
+      NL: e623bc0d-296b-4f2a-933a-69df8afb30c3
+      DE: 4f6287dc-784e-459c-b3d1-3318b369b3ab
+      BE: d658cb0c-e221-4cc7-911b-fc6695f5dee0
+      AT: 9d106e00-db3a-40cd-b305-db3d092e7a79
+      IE:
+  
+  imbal:
+    FR:
+      imbal long: ba69c652-d445-4f08-adcf-10ea25e56770
+      imbal short: 7694f1e7-eacf-4b15-9abd-2499ca89b515
+    NL: 
+      imbal short: f33914e0-99e9-47a8-9047-2bd63c4e72db
+      imbal long: 862799c1-aaad-480c-a323-9ba23f8d0e30
+    BE:
+      imbal: 6d68aa48-d9bd-4f21-96ea-e4d5e8af89e1
+    IE:
+      imbal: 4775c4cd-4acd-4c1c-8d23-aed234f274ab
+    GB:
+      imbal: 627eb1a0-c865-4c7c-9cfd-b5e6fb53cba4
+    AT:
+      imbal: 7793661b-7945-48d3-b9a9-a0d5539d08a1
+
+
+  intraday:
+    url : https://portal-api.energetech.ae/contibackend/xbpositions/positions?date=2023-06-07T00%3A00%3A00&country=FR&horizon=Day-Ahead
+    product: "Day-Ahead"
+  
+  intraday_trades:
+    vwap_duration: 60
+    vwap_h_delivery: [60, 120]
+
+
+
+
+
+

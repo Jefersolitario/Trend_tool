@@ -1,0 +1,54 @@
+start: "2022-09-22" 
+end: "2023-09-27"
+SHAP_importance: True
+
+timeseries:
+  endpoint: https://portal-api.energetech.ae/timeseriesrestapi/hotstorage/latest/actuals/?
+  endpoint_forecast: https://portal-api.energetech.ae/timeseriesrestapi/hotstorage/latest/forecasts/?
+  endpoint_coldstorage: https://portal-api.energetech.ae/timeseriesrestapi/coldstorage/partitioned_by_event_at?
+  endpoint_coldstorage_forecast: https://portal-api.energetech.ae/timeseriesrestapi/coldstorage/partitioned_by_pub_at?
+  user: energetech 
+  password: p37068Q$ptkH
+
+meta_data_id: 
+  demand_dah: 95cc0f74-9641-4742-9eb2-afff705923bc
+  demand_id: eed2a919-05b1-42c4-8b95-36d3b02490c3
+  flows_id: f5acacff-d192-4de2-bde6-bf9eae57f248
+  solar_dah: 0adc71ad-c779-4533-a3d7-acd5251074fa
+  solar_id_rte: 6d477c51-e91b-4a50-b189-d8bc5327cfee
+  solar_id_andrei: 2c72167f-c520-4c11-989b-199955debc12
+  wind_dah: meteologica_france_wind_powergeneration_forecast_meteologica_total_total_hourly_perc50_-1_11_55
+  wind_dah_cold: meteologica_france_wind_powergeneration_forecast_meteologica_total_total_hourly_perc50
+  wind_id_meteo: bf6e58e3-8249-4e23-be11-3b88c609625f
+  wind_id_andrei : 93cc3093-e9cf-4aea-8337-fcc6cfea32ef
+  nuclear_avail : FR Nuclear Capacity Available MW REMIT
+  nuclear_forecast : FR Nuclear Production MWh/h 15min Forecast
+  nuclear_actuals: 9ce92877-6ff0-4df4-9413-82ddc0a42a00
+  hydro: 'FR Hydro Run-of-river Production MWh/h 15min Forecast'
+  imbal_pos: ba69c652-d445-4f08-adcf-10ea25e56770
+  imbal_neg: 7694f1e7-eacf-4b15-9abd-2499ca89b515
+  imbal_niv: b1f83f77-34f6-4fec-b9fb-cccfa1f1d938
+
+
+Enappsys:
+  username_ie : "EnergeTechOps"
+  password_ie: "pass_generation"
+  flow_endpoint: https://eu.data.energy/datadownload?code=fr/elec/inter/deltas/combined&currency=EUR&minavmax=false&pass=233238244242225228225249&res=hh&tag=csv&timezone=CET&user=powerintraday
+Empire:
+  flow_endpoint: https://api.empire.britned.com/v1/public/nominations/aggregated-overview?
+
+eq:
+  key: 1ecf9dc2-465bb072-1601254f-5bec9a8d
+
+flows:
+  lead_time : 60
+  duration : 5
+
+columns_diplay:
+
+  ['Balance of Power', 'demand_delta',  'id Flow', 'wind_delta', 'solar_delta',
+  'Nuclear gen delta', 'hydro_change','demand_dah', 'demand_id', 
+  'wind meteo dah', 'wind_id', 'solar_dah', 'solar_id',
+  'nuclear_actuals', 'nuclear energetech_forecast', 'hydro ror id', 'hydro dah']
+
+
